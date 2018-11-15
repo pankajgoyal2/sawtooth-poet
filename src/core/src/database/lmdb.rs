@@ -256,7 +256,6 @@ impl<'a> LmdbDatabaseWriter<'a> {
 mod tests {
     use super::*;
     use database::config;
-    use std::fs;
 
     /// Asserts that there are COUNT many objects in DB.
     fn assert_database_count(count: usize, db: &LmdbDatabase) {
@@ -307,10 +306,9 @@ mod tests {
     fn test_lmdb() {
         let path_config = config::get_path_config();
 
-        let store_path = &path_config.data_dir.join(String::from("unit-lmdb.lmdb"));
+        let blockstore_path = &path_config.data_dir.join(String::from("unit-lmdb.lmdb"));
 
-        let mut lmdb_file_path =  store_path.to_str().unwrap();
-        let ctx = LmdbContext::new(store_path, 3, None)
+        let ctx = LmdbContext::new(blockstore_path, 3, None)
             .map_err(|err| DatabaseError::InitError(format!("{}", err)))
             .unwrap();
 
@@ -397,6 +395,5 @@ mod tests {
         assert_database_count(1, &database);
         assert_key_value(5, 6, &database);
         assert_not_in_database(3, &database);
-        fs::remove_file(lmdb_file_path);
     }
 }
