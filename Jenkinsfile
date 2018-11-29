@@ -63,7 +63,7 @@ node ('master') {
             env.COMPOSE_PROJECT_NAME = sh(returnStdout: true, script: 'printf $BUILD_TAG | sha256sum | cut -c1-64').trim()
 
             // Run the tests
-            stage("Run Tests") {
+            stage("Run Test") {
                 sh './bin/run_docker_test tests/unit-poet.yaml'
                 sh './bin/run_docker_test tests/unit-ias-client.yaml'
                 sh './bin/run_docker_test tests/unit-ias-proxy.yaml'
@@ -73,6 +73,7 @@ node ('master') {
                     | awk {\'if(NR>1)print $1\'}) &> /dev/null
                 '''
             }
+
 
             // Build PoET2
             stage("Build PoET2") {
