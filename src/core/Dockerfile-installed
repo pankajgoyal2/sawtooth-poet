@@ -76,13 +76,9 @@ RUN bash -c "curl -OLsS https://download.01.org/intel-sgx/linux-2.3/ubuntu16.04-
   && chmod +x ./sgxsdk/environment"
 
 ENV PATH=$PATH:/protoc3/bin:/root/.cargo/bin
+ENV LD_LIBRARY_PATH=/tmp/sgxsdk/sdk_libs:/project/sawtooth-poet/src/build/bin:$LD_LIBRARY_PATH
 RUN /root/.cargo/bin/cargo install cargo-deb
 
-COPY . /project/sawtooth-poet
-
-WORKDIR /project/sawtooth-poet
-RUN bash -c "source build_sgx_binary.sh"
- 
 WORKDIR /project/sawtooth-poet/src/core
 
 #RUN sed -i -e s/version.*$/version\ =\ \"$(bin/get_version)\"/ Cargo.toml

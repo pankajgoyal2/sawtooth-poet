@@ -13,3 +13,5 @@ services:
         - http_proxy
         - https_proxy
         - no_proxy
+    volumes:
+      - ./:/project/sawtooth-poet/

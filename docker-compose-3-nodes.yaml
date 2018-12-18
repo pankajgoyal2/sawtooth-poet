@@ -167,7 +167,6 @@ services:
         && cp /poet_keys/validator-1.priv /etc/sawtooth/keys/validator.priv \
         && cp /poet_keys/validator-1.pub /etc/sawtooth/keys/validator.pub \
         && cat /etc/sawtooth/keys/validator.pub \
-        && source /project/sawtooth-poet/build_sgx_binary.sh \
         && RUST_BACKTRACE=1 cargo run --bin sawtooth-poet -- \
         --config /project/sawtooth-poet/src/core/src/resources/poet_config.toml \
         -C tcp://validator-1:5050 -vv --genesis /poet_keys/poet-config.batch\""
@@ -199,7 +198,6 @@ services:
         && cp /poet_keys/validator-2.priv /etc/sawtooth/keys/validator.priv \
         && cp /poet_keys/validator-2.pub /etc/sawtooth/keys/validator.pub \
         && cat /etc/sawtooth/keys/validator.pub \
-        && source /project/sawtooth-poet/build_sgx_binary.sh \
         && RUST_BACKTRACE=1 cargo run --bin sawtooth-poet -- \
         --config /project/sawtooth-poet/src/core/src/resources/poet_config.toml \
         -C tcp://validator-2:5050 -vv \""
@@ -231,7 +229,6 @@ services:
         && cp /poet_keys/validator-3.priv /etc/sawtooth/keys/validator.priv \
         && cp /poet_keys/validator-3.pub /etc/sawtooth/keys/validator.pub \
         && cat /etc/sawtooth/keys/validator.pub \
-        && source /project/sawtooth-poet/build_sgx_binary.sh \
         && RUST_BACKTRACE=1 cargo run --bin sawtooth-poet -- \
         --config /project/sawtooth-poet/src/core/src/resources/poet_config.toml \
         -C tcp://validator-3:5050 -vv \""

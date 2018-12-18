@@ -19,6 +19,8 @@ version = "0.1.0"
 authors = ["Intel Corporation"]
 description = "PoET2 consensus algorithm for Sawtooth"
 
+build = "build.rs"
+
 [dependencies]
 sawtooth-sdk = { git = "https://github.com/hyperledger/sawtooth-core.git", rev="279d5b6" }
 rand = "0.4.2"

@@ -29,7 +29,6 @@ services:
        - ./:/project/sawtooth-poet/
      working_dir: '/project/sawtooth-poet/src/core'
      entrypoint: "bash -c \"\
-         source /project/sawtooth-poet/build_sgx_binary.sh \
-         && RUST_BACKTRACE=1 cargo run --bin sawtooth-poet -- -C tcp://validator-x:5050 -v \""
+         RUST_BACKTRACE=1 cargo run --bin sawtooth-poet -- -C tcp://validator-x:5050 -v \""
      stop_signal: SIGKILL
 

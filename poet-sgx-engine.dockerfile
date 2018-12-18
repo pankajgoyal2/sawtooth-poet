@@ -71,6 +71,8 @@ RUN curl https://sh.rustup.rs -sSf > /usr/bin/rustup-init \
 ENV PATH=$PATH:/protoc3/bin:/project/sawtooth-core/bin:/root/.cargo/bin \
     CARGO_INCREMENTAL=0
 
+ENV LD_LIBRARY_PATH=/tmp/sgxsdk/sdk_libs:/project/sawtooth-poet/src/build/bin:$LD_LIBRARY_PATH
+
 RUN rustup component add rustfmt-preview
 
 WORKDIR /tmp
